@@ -10,7 +10,7 @@ print("Current Weather\nFrom which city do you want to know the weather?")
 city = input()
 print("\nCurrently Loading......\n")
 response_location = requests.get(
-    "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=a643535e40a80c84e1505cc90ed5eb95")
+    "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid={apiKey}") #apikey needs to be filled in
 # print(response_location.status_code) # 200 means succesfull connection
 # print(response_location.json())
 if response_location.status_code == 200:
@@ -23,7 +23,7 @@ longitude = response_location.json()[0]['lon']
 # print(longitude)
 
 response_weather = requests.get("https://api.openweathermap.org/data/2.5/weather?lat=" + str(latitude) + "&lon=" + str(
-    longitude) + "&appid=a643535e40a80c84e1505cc90ed5eb95")
+    longitude) + "&appid={apiKey") # apiKey needs to be filled in
 # print(response_weather.status_code)
 # print(response_weather.json())
 if response_weather.status_code == 200:
